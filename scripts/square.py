@@ -141,6 +141,7 @@ class MoveSquare(object):
 
         r = rospy.Rate(2)
         while not rospy.is_shutdown():
+            r.sleep()
 
 if __name__ == '__main__':
     node = MoveSquare()
