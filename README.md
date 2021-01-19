@@ -15,4 +15,8 @@ must be published every time it has been changed. I also changed the run functio
 have a while loop to send messages while the program isn't shutdown. My main problem 
 had been from keeping the subscriber line for so long when it wasn't necessary. 
 It was preventing my robot from following all the instructions. After removing it,
-my next problem was trying to get the robot to move at all. 
+my next problem was trying to get the robot to move at all.
+Turns out! Since nothing was calling my process_square function (because of lack of subscriber),
+it just wasn't doing anything. So I put it all in the run function and it's fine now!
+
+ 
