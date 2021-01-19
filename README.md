@@ -19,4 +19,4 @@ my next problem was trying to get the robot to move at all.
 Turns out! Since nothing was calling my process_square function (because of lack of subscriber),
 it just wasn't doing anything. So I put it all in the run function and it's fine now!
 
- 
+![gif](http://drive_square.gif) 
