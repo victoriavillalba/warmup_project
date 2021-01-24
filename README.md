@@ -20,3 +20,24 @@ Turns out! Since nothing was calling my process_square function (because of lack
 it just wasn't doing anything. So I put it all in the run function and it's fine now!
 
 ![gif](drive_square.gif) 
+
+## Wall Follower
+The goal of this part of the project was to get a robot to approach a wall and follow
+it around the whole room indefinitely. At first, I applied the stop_at_wall code to
+set up a similar foundation and then add the extra steps. Then, I made the whole
+thing spaz for hours after a bunch of experimenting because the callback function
+can't handle waiting for 2 seconds. I learned that the callback function is
+constantly being called, without regard of the previous call being completed or not.
+So, what I ended up doing is letting the code decide if it's done turning by changing
+the linear and angular velocity when the path in front of it is cleared by at least
+the amount of distance the robot wants to keep between itself and the wall, which
+is, in this case, 0.5 meters. 
+The class FollowWall has an init function that initializes everything, the
+subscriber, publisher, and Twist stuff. The process_scan function is called by the
+subscriber to determine if it's distance from the wall calls for an angular velocity
+or linear velocity. The run function calls rospy.spin(), and the last function
+initiates the whole thing to make sure it is run.
+The only problem I see is that the noise makes the robot go straight at first, then
+move at an angle.
+
+![gif](wall_follower.gif)
