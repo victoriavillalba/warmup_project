@@ -64,3 +64,33 @@ code that looks for and follows the person, and then the run function that does
 rospy.spin(). And lastly, the main function that gets the whole class to run.
 
 ![gif](person_follower.gif)
+
+Challenges:
+The biggest challenges were figuring out the difference between code when subscriber
+is used and when it isn't, figuring out how to manipulate the data.ranges info, 
+and figuring out what can and can't be used in a callback function that might screw
+things over. The subscriber issue was carified to me after a lot of studying and 
+comparing code, along with consultation to figure out what really happens behind
+the scenes. Figuring out how to manipulate the data.ranges information took a lot
+of trial and error and avoiding directly referencing the INF values. Figuring out
+which statements can be used in callback functions also took a lot of trial and
+error, manipulating, and rewording my code. In the end, I just tried to make the
+code as simple as possible and make the most concise changes in increments.
+
+Future work:
+I would improve my robot behaviors by making them act more smoothly, or more like
+they know what they'redoing. Almost as if  they're "smart" or something. Like 
+with the person follower, I made it change angular speed and linear speed based
+on where it was compared to the object. If I could do that but add more, I would
+make its movements more fluid. I would also try to fix my code to make it more
+concise and easier to follow.
+
+Takeaways:
+1. Avoid using while/for loops. That clogged up the messages and made everything
+	spaz. You should never assume that one message is waiting for another,
+	but that it's a constant stream of messages.
+2. Don't overthink it, it's probably better to start with something familiar and
+	then work your way up to the goal in small steps. I just came up with
+	one idea, wrote it up, then wondered why nothing was working after so
+	many lines of code and so much time wasted. It usually even ends up
+	being simpler than you expected it to be.
