@@ -31,7 +31,10 @@ constantly being called, without regard of the previous call being completed or 
 So, what I ended up doing is letting the code decide if it's done turning by changing
 the linear and angular velocity when the path in front of it is cleared by at least
 the amount of distance the robot wants to keep between itself and the wall, which
-is, in this case, 0.5 meters. 
+is, in this case, 0.5 meters. Another requirement, which the picture on the warmup
+project page inspired me to include, is that the distance of the wall to the right
+of the robot has to be smaller than the distance of the robot ot the wall at an angle
+between its right and front sides.
 The class FollowWall has an init function that initializes everything, the
 subscriber, publisher, and Twist stuff. The process_scan function is called by the
 subscriber to determine if it's distance from the wall calls for an angular velocity

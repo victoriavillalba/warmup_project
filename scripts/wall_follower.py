@@ -22,14 +22,16 @@ class FollowWall(object):
 
     def process_scan(self,data):
         # imitating stop_at_wall exercise to approach wall before following it
-        turning = 0
-        if data.ranges[0] > 0.5:
-            self.twist.angular.z = 0
-            self.twist.linear.x = 0.5
+        if data.ranges[0] < 0.5:
+            if data.ranges[89] < data.ranges[44]:
+                self.twist.angular.z = 0
+                self.twist.linear.x = 0.5
+            else:
+                self.twist.linear.x = 0
+                self.twist.angular.z = (1.570796326794897/2)
         else:
-            self.twist.linear.x = 0
-            self.twist.angular.z = (1.570796326794897/2)
-            turning = 1
+            self.twist.linear.x = 0.5
+            self.twist.angular.z = 0
         self.twist_pub.publish(self.twist)
 
 
