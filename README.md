@@ -44,3 +44,23 @@ The only problem I see is that the noise makes the robot go straight at first, t
 move at an angle.
 
 ![gif](wall_follower.gif)
+
+## Person Follower
+The goal of the part of the project is to get the robot to follow the object closest
+to itself. My approach was, at first, to find the angle with the shortest possible
+distance, bu that would make it spin forever until it finally hit that one specific
+angle. Then I realized that most values would be inf. So i tried to do an if
+statement to see if it was inf or not, but I didn't know it's data type and 
+interpreting it as a string wasn't working. Then I realized that any non-inf value
+would have to be less than 3.5 meters, so I made that my condition for the if 
+statement. I also made it more specific so that it would look less robotic when
+the robot was serching for the object. So if the object was within 10 degrees
+of the closest distance, it would slow down the rotaation so it can't rotate past
+the object, and start moving linearly, too. It would also start rotating right or
+left depending on which side the object was on relative to the robot.
+I made a FollowPerson class with an init function that establishes the subscriber,
+publisher, and twist. There's also the process_scan function that carries out the
+code that looks for and follows the person, and then the run function that does
+rospy.spin(). And lastly, the main function that gets the whole class to run.
+
+![gif](person_follower.gif)

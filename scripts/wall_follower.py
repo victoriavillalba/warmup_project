@@ -5,8 +5,6 @@ from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Vector3
 
-#global atWall
-#atWall = 0
 
 class FollowWall(object):
     def __init__(self):
@@ -23,7 +21,8 @@ class FollowWall(object):
     def process_scan(self,data):
         # imitating stop_at_wall exercise to approach wall before following it
         if data.ranges[0] < 0.5:
-            if data.ranges[89] < data.ranges[44]:
+            if data.ranges[89] < data.ranges[43]:
+                # so it doesn't start going straight too early
                 self.twist.angular.z = 0
                 self.twist.linear.x = 0.5
             else:
